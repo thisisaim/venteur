@@ -1,0 +1,75 @@
+# Directories #
+bin/
+obj/
+publish/
+out/
+.vs/
+.vscode/
+.idea/
+
+# Files #
+*.user
+*.suo
+*.userprefs
+*.sln.docstates
+*.dll
+*.exe
+*.pdb
+*.cache
+*.vsp
+*.swp
+*.*.swp
+*.dbmdl
+*.jfm
+*.db
+*.swm
+*.swn
+*.swo
+*.smb
+*.ldf
+*.mdf
+*.DS_Store
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]ogs/
+[Tt]est[Rr]esult*
+*.VisualState.xml
+TestResult.xml
+nunit-*.xml
+
+# NuGet Packages
+*.nupkg
+*.snupkg
+*.nuget.targets
+*.nuget.props
+/packages/
+
+# Tooling
+.project
+*.json
+
+# JetBrains Rider
+.idea/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# OS generated files #
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# AWS Files
+.aws-sam/
