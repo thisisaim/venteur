@@ -174,3 +174,79 @@ This function leverages Amazon DynamoDB for durable storage and retrieval of req
 
 The `GetResultHandler` Lambda function demonstrates a cost-effective, scalable, and reliable method for managing chess game calculations in a serverless environment. By using SQLite for caching, it achieves enhanced performance for repeated queries while controlling costs, making it an ideal solution for testing and development phases.
 
+
+# How to Use
+
+This document describes how to interact with the deployed AWS Lambda functions using the provided endpoints.
+
+## 1. CreateRequestHandler
+
+### Endpoint
+https://5oyqu9jirk.execute-api.us-east-2.amazonaws.com/test/requesthandler
+
+
+### Description
+Initiates a new request to calculate the shortest path a knight can take between two points on a chessboard.
+
+### Usage
+- **Method:** POST
+- **Headers:**
+  - Content-Type: application/json
+- **Body:**
+  - JSON object containing the `source` and `target` chessboard positions.
+
+```json
+{
+  "source": "A1",
+  "target": "B3"
+}
+```
+Response
+Returns an operation ID which can be used to retrieve the calculation result.
+```
+{
+  "operationId": "some-generated-id"
+}
+```
+## 2. GetResultHandler
+
+### Endpoint
+https://5oyqu9jirk.execute-api.us-east-2.amazonaws.com/test/getresulthandler
+
+### Description
+Retrieves the result of a previously initiated request to calculate the shortest path a knight can take on a chessboard.
+
+### Usage
+- **Method:** GET
+- **Headers:**
+  - Content-Type: application/json
+- **Query Parameters:**
+  - operationId: The unique ID of the operation to retrieve the result for.
+
+GET /getresulthandler?operationId=some-generated-id
+
+Response
+Returns the result of the path calculation.
+
+Example Request URL:
+```json
+{
+  "operationId": "some-generated-id",
+  "source": "A1",
+  "target": "B3",
+  "result": ["A1", "C2", "B3"]
+}
+```
+Response
+Returns the calculation result, including the path taken and the number of moves.
+
+```json
+{
+  "OperationId": "3bb51a71-fc9d-499a-88e6-e571713d767a",
+  "Source": "A1",
+  "Target": "B3",
+  "Path": ["A1", "B3"],
+  "NumberOfMoves": 1,
+  "Message": "Result: Path - A1, B3, Moves - 1"
+}
+```
